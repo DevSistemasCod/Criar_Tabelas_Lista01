@@ -1,19 +1,24 @@
-2) 1FN, 2FN e 3FN
+PK(CPFCliente)
+Cliente = {CPFCliente, NomeCliente}
 
-PK(NroMatricula)
-Aluno = {NroMatricula, NomeAluno, CodTurma}
+PK(CPFCliente)
+FK(CPFCliente)
+TelefoneDoCliente = {CPFCliente, TelefoneCelular, TelefoneResidencial, TelefoneComercial}
 
-PK(NroRegistroProf)
-Professor = {NroRegistroProf, Nome, CodTurma , CodDisciplinaLeciona}
+PK(CPFCliente)
+FK(CPFCliente)
+EnderecoDoCliente = {CPFCliente, Estado, Cidade, Bairro, Rua, Número, CEP, Logradouro}
 
-PK(CodDisciplina)
-Disciplina = {CodDisciplina, NomeDisciplina, CargaHoraria, Descrição}
+PK(CodMedic)
+FK(IdFabricante)
+Medicamento = {CodMedic, NomeMedic, IdFabricante, DataValidade}
 
-PK(SiglaCurso)
-Curso = {SiglaCurso, CodDisciplina, Nome, CargaHoraria, Descricao}
+PK(CNPJ)
+Fabricante = {CNPJ, RazaoSocial, NomeFantasial, Email}
 
-PK(CodTurma)
-Turma = {CodTurma, NroAlunos, SiglaCurso, NroRegistroProf, Periodo }
+PK(CodVenda)
+FK(CPFCliente e CodigoMedic)
+Venda = {CodVenda, DataVenda, CPFCliente, CodigoMedic}
 
-PK(NroMatricula)
-Matricula = {NroMatricula, NomeAluno, SiglaCurso, Ano, Semestre}
+PK(CodVenda e CodMedic)
+ItensVenda = {CodVenda, CodMedic, Quantidade, DataVenda}
