@@ -20,7 +20,6 @@ CREATE TABLE curso (
 CREATE TABLE professor (
     nro_registro_professor VARCHAR(15) PRIMARY KEY,
     nome VARCHAR(50),
-    codigo_turma VARCHAR(15),
     codigo_disciplina VARCHAR(15),
     FOREIGN KEY (codigo_disciplina) REFERENCES disciplina(codigo_disciplina)
 );
