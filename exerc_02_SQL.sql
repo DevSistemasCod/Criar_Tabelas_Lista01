@@ -1,56 +1,67 @@
--- Tabela Disciplina
-CREATE TABLE disciplina (
-    codigo_disciplina INT PRIMARY KEY,
-    nome_disciplina VARCHAR(50),
-    carga_horaria INT,
-    descricao VARCHAR(100)
+-- Tabela Cliente
+CREATE TABLE cliente (
+    cpf_cliente VARCHAR(11) PRIMARY KEY,
+    nome_cliente VARCHAR(50) NOT NULL
 );
 
--- Tabela Curso
-CREATE TABLE curso (
-    sigla_curso VARCHAR(10) PRIMARY KEY,
-    codigo_disciplina INT,
-    nome VARCHAR(50),
-    carga_horaria INT,
-    descricao VARCHAR(100),
-    FOREIGN KEY (codigo_disciplina) REFERENCES disciplina(codigo_disciplina)
+-- Tabela TelefoneDoCliente
+CREATE TABLE telefone_cliente (
+    cpf_cliente VARCHAR(11),
+    telefone_celular VARCHAR(15) NOT NULL,
+    telefone_residencial VARCHAR(15),
+    telefone_comercial VARCHAR(15),
+    PRIMARY KEY (cpf_cliente),
+    FOREIGN KEY (cpf_cliente) REFERENCES cliente(cpf_cliente)
 );
 
--- Tabela Professor
-CREATE TABLE professor (
-    nro_registro_professor INT PRIMARY KEY,
-    nome VARCHAR(50),
-    codigo_turma INT,
-    codigo_disciplina INT,
-    FOREIGN KEY (codigo_disciplina) REFERENCES disciplina(codigo_disciplina)
+-- Tabela EnderecoDoCliente
+CREATE TABLE endereco_cliente (
+    cpf_cliente VARCHAR(11),
+    estado VARCHAR(20) NOT NULL,
+    cidade VARCHAR(30) NOT NULL,
+    bairro VARCHAR(30) NOT NULL,
+    rua VARCHAR(50) NOT NULL,
+    numero VARCHAR(10) NOT NULL,
+    cep VARCHAR(10) NOT NULL,
+    logradouro VARCHAR(100) NOT NULL,
+    PRIMARY KEY (cpf_cliente),
+    FOREIGN KEY (cpf_cliente) REFERENCES cliente(cpf_cliente)
 );
 
--- Tabela Turma
-CREATE TABLE turma (
-    codigo_turma INT PRIMARY KEY,
-    nro_alunos INT,
-    sigla_curso VARCHAR(10),
-    nro_registro_Professor INT,
-    periodo VARCHAR(20),
-    FOREIGN KEY (sigla_curso) REFERENCES curso(sigla_curso),
-    FOREIGN KEY (nro_registro_Professor) REFERENCES professor(nro_registro_professor)
+-- Tabela Fabricante
+CREATE TABLE fabricante (
+    cnpj VARCHAR(15) PRIMARY KEY,
+    razao_social VARCHAR(100) NOT NULL,
+    nome_fantasia VARCHAR(100) NOT NULL,
+    email VARCHAR(100)
 );
 
--- Tabela Aluno
-CREATE TABLE aluno (
-    nro_matricula INT PRIMARY KEY,
-    nome_aluno VARCHAR(50),
-    codigo_turma INT,
-    FOREIGN KEY (codigo_turma) REFERENCES turma(codigo_turma)
+-- Tabela Medicamento
+CREATE tABLE medicamento (
+    codigo_medicamento VARCHAR(15) PRIMARY KEY,
+    nome_medicamento VARCHAR(100) NOT NULL,
+    codigo_fabricante VARCHAR(15) NOT NULL,
+    data_validade DATE NOT NULL,
+    FOREIGN KEY (codigo_fabricante) REFERENCES fabricante(cnpj)
 );
 
--- Tabela Matricula
-CREATE TABLE matricula (
-    nro_matricula INT PRIMARY KEY,
-    nome_aluno VARCHAR(50),
-    sigla_curso VARCHAR(10),
-    ano INT,
-    semestre INT,
-    FOREIGN KEY (sigla_curso) REFERENCES curso(sigla_curso),
-	FOREIGN KEY (nro_matricula) REFERENCES Aluno(nro_matricula)
+-- Tabela Venda
+CREATE TABLE venda (
+    codigo_venda VARCHAR(15) PRIMARY KEY,
+    data_venda DATE NOT NULL,
+    cpf_cliente VARCHAR(11) NOT NULL,
+    codigo_medicamento VARCHAR(15) NOT NULL,
+    FOREIGN KEY (cpf_cliente) REFERENCES cliente(cpf_cliente),
+    FOREIGN KEY (codigo_medicamento) REFERENCES medicamento(codigo_medicamento)
+);
+
+-- Tabela ItensVenda
+CREATE TABLE ItensVenda (
+    codigo_venda VARCHAR(15) NOT NULL,
+    codigo_medicamento VARCHAR(15) NOT NULL,
+    quantidade INT NOT NULL,
+    data_venda DATE NOT NULL,
+    PRIMARY KEY (codigo_venda, codigo_medicamento),
+    FOREIGN KEY (codigo_venda) REFERENCES venda(codigo_venda),
+    FOREIGN KEY (codigo_medicamento) REFERENCES Medicamento(codigo_medicamento)
 );
