@@ -1,0 +1,10 @@
+1)	1FN, 2FN e 3FN
+
+PK(NomeFunc, CodigoFunc)
+Funcionario = {NomeFunc, CodigoFunc, Cargo, SiglaDepto}
+
+PK(SiglaDepto, NomeDepto)
+Departamento = {SiglaDepto, NomeDepto, QtdFunc}
+
+PK(SiglaProj, NomeProj)
+Projeto = {SiglaProj, NomeProj, NomeFunc, CodigoFunc, SiglaDepto}
