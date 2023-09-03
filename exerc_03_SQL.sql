@@ -52,5 +52,5 @@ CREATE TABLE matricula (
     ano INT,
     semestre INT,
     FOREIGN KEY (sigla_curso) REFERENCES curso(sigla_curso),
-	FOREIGN KEY (nro_matricula) REFERENCES Aluno(nro_matricula)
+	FOREIGN KEY (nro_matricula) REFERENCES aluno(nro_matricula)
 );
