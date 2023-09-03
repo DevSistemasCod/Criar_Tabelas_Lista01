@@ -30,7 +30,7 @@ CREATE TABLE cliente (
 );
 
 -- Tabela EnderecoDoCliente
-CREATE TABLE EnderecoDoCliente (
+CREATE TABLE endereco_do_cliente (
     codigo_cliente VARCHAR(15) PRIMARY KEY,
     estado VARCHAR(20) NOT NULL,
     cidade VARCHAR(50) NOT NULL,
