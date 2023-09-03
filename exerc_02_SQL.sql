@@ -56,12 +56,12 @@ CREATE TABLE venda (
 );
 
 -- Tabela ItensVenda
-CREATE TABLE ItensVenda (
+CREATE TABLE itens_venda (
     codigo_venda VARCHAR(15) NOT NULL,
     codigo_medicamento VARCHAR(15) NOT NULL,
     quantidade INT NOT NULL,
     data_venda DATE NOT NULL,
     PRIMARY KEY (codigo_venda, codigo_medicamento),
     FOREIGN KEY (codigo_venda) REFERENCES venda(codigo_venda),
-    FOREIGN KEY (codigo_medicamento) REFERENCES Medicamento(codigo_medicamento)
+    FOREIGN KEY (codigo_medicamento) REFERENCES medicamento(codigo_medicamento)
 );
