@@ -60,7 +60,7 @@ CREATE TABLE itens_emprestimo (
     quantidade INT,
     PRIMARY KEY (codigo_emprestimo, isbn),
     FOREIGN KEY (codigo_emprestimo) REFERENCES emprestimo(codigo_emprestimo),
-    FOREIGN KEY (isbn) REFERENCES Livro(isbn)
+    FOREIGN KEY (isbn) REFERENCES livro(isbn)
 );
 
 
