@@ -1,0 +1,19 @@
+3) 1FN, 2FN e 3FN
+
+PK(NroMatricula)
+Aluno = {NroMatricula, NomeAluno, CodTurma}
+
+PK(NroRegistroProf)
+Professor = {NroRegistroProf, Nome, CodTurma , CodDisciplinaLeciona}
+
+PK(CodDisciplina)
+Disciplina = {CodDisciplina, NomeDisciplina, CargaHoraria, Descrição}
+
+PK(SiglaCurso)
+Curso = {SiglaCurso, CodDisciplina, Nome, CargaHoraria, Descricao}
+
+PK(CodTurma)
+Turma = {CodTurma, NroAlunos, SiglaCurso, NroRegistroProf, Periodo }
+
+PK(NroMatricula)
+Matricula = {NroMatricula, NomeAluno, SiglaCurso, Ano, Semestre}
