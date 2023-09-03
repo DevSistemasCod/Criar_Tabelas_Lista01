@@ -1,0 +1,13 @@
+1FN, 2FN e 3FN
+Livro = {ISBN, Titulo, CodigoAutor, Tema, CodEditora, Ano}
+ 
+Autor = {CodigoAutor, NomeAutor, EscolaLiteraria}
+ 
+Editora = {CodEditora, NomeEditora}
+
+Emprestimo = {CodigoEmprestimo, DataEmprestimo, DataDevolucao, CodigoCliente, ISBN}
+ 
+ItensEmprestimo = {CodigoEmprestimo, ISBN, Quantidade}
+ 
+Cliente = {CodigoCliente, NomeCliente}
+EnderecoDoCliente = { CodigoCliente, Estado, Cidade, Bairro, Rua, Número, CEP, Logradouro}
