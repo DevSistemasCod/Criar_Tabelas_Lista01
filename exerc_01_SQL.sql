@@ -20,6 +20,6 @@ CREATE TABLE projeto (
     codigo_funcionario INT NOT NULL,
     sigla_depto VARCHAR(15) NOT NULL,
     PRIMARY KEY (sigla_projeto, nome_projeto),
-    FOREIGN KEY (sigla_depto) REFERENCES Departamento(sigla_depto),
-    FOREIGN KEY (codigo_funcionario) REFERENCES Funcionario(codigo_funcionario)
+    FOREIGN KEY (sigla_depto) REFERENCES departamento(sigla_depto),
+    FOREIGN KEY (codigo_funcionario) REFERENCES funcionario(codigo_funcionario)
 );
