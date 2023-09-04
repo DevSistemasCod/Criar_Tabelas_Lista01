@@ -5,11 +5,11 @@ CREATE TABLE cliente (
 );
 
 -- Tabela TelefoneDoCliente
-CREATE TABLE telefone_cliente (
+CREATE TABLE tel_cliente (
     cpf_cliente VARCHAR(11),
-    telefone_celular VARCHAR(15) NOT NULL,
-    telefone_residencial VARCHAR(15),
-    telefone_comercial VARCHAR(15),
+    tel_celular VARCHAR(15) NOT NULL,
+    tel_residencial VARCHAR(15),
+    tel_comercial VARCHAR(15),
     PRIMARY KEY (cpf_cliente),
     FOREIGN KEY (cpf_cliente) REFERENCES cliente(cpf_cliente)
 );
@@ -31,37 +31,37 @@ CREATE TABLE endereco_cliente (
 -- Tabela Fabricante
 CREATE TABLE fabricante (
     cnpj VARCHAR(15) PRIMARY KEY,
-    razao_social VARCHAR(100) NOT NULL,
-    nome_fantasia VARCHAR(100) NOT NULL,
+    razaosocial VARCHAR(100) NOT NULL,
+    nomefantasia VARCHAR(100) NOT NULL,
     email VARCHAR(100)
 );
 
 -- Tabela Medicamento
 CREATE tABLE medicamento (
-    codigo_medicamento VARCHAR(15) PRIMARY KEY,
+    codmedicamento VARCHAR(15) PRIMARY KEY,
     nome_medicamento VARCHAR(100) NOT NULL,
-    codigo_fabricante VARCHAR(15) NOT NULL,
-    data_validade DATE NOT NULL,
-    FOREIGN KEY (codigo_fabricante) REFERENCES fabricante(cnpj)
+    codfabricante VARCHAR(15) NOT NULL,
+    data_val DATE NOT NULL,
+    FOREIGN KEY (codfabricante) REFERENCES fabricante(cnpj)
 );
 
 -- Tabela Venda
 CREATE TABLE venda (
-    codigo_venda VARCHAR(15) PRIMARY KEY,
+    codvenda VARCHAR(15) PRIMARY KEY,
     data_venda DATE NOT NULL,
     cpf_cliente VARCHAR(11) NOT NULL,
-    codigo_medicamento VARCHAR(15) NOT NULL,
+    codmedicamento VARCHAR(15) NOT NULL,
     FOREIGN KEY (cpf_cliente) REFERENCES cliente(cpf_cliente),
-    FOREIGN KEY (codigo_medicamento) REFERENCES medicamento(codigo_medicamento)
+    FOREIGN KEY (codmedicamento) REFERENCES medicamento(codmedicamento)
 );
 
 -- Tabela ItensVenda
 CREATE TABLE itens_venda (
-    codigo_venda VARCHAR(15) NOT NULL,
-    codigo_medicamento VARCHAR(15) NOT NULL,
+    codvenda VARCHAR(15) NOT NULL,
+    codmedicamento VARCHAR(15) NOT NULL,
     quantidade INT NOT NULL,
     data_venda DATE NOT NULL,
-    PRIMARY KEY (codigo_venda, codigo_medicamento),
-    FOREIGN KEY (codigo_venda) REFERENCES venda(codigo_venda),
-    FOREIGN KEY (codigo_medicamento) REFERENCES medicamento(codigo_medicamento)
+    PRIMARY KEY (codvenda, codmedicamento),
+    FOREIGN KEY (codvenda) REFERENCES venda(codvenda),
+    FOREIGN KEY (codmedicamento) REFERENCES medicamento(codmedicamento)
 );
